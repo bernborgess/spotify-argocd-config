@@ -29,4 +29,3 @@ spec:
             path: /home/bernardoborges/project2-pv
       restartPolicy: OnFailure
       dnsPolicy: ClusterFirst
-  backoffLimit: 4
