@@ -24,15 +24,9 @@ spec:
           volumeMounts:
             - name: project2-pv-bernardoborges
               mountPath: /home/bernardoborges/project2-pv
-            - name: dataset-volume
-              mountPath: /home/datasets
       volumes:
         - name: project2-pv-bernardoborges
           hostPath:
             path: /home/bernardoborges/project2-pv
-        - name: dataset-volume
-          hostPath:
-            path: /home/datasets
-            type: Directory
       restartPolicy: OnFailure
       dnsPolicy: ClusterFirst
