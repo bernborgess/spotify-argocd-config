@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spotify-flask-api
+  namespace: bernardoborges
+  labels:
+    app: spotify-flask-api
+spec:
+  selector:
+    matchLabels:
+      app: spotify-flask-api
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: spotify-flask-api
+    spec:
+      containers:
+        - name: spotify-flask-api
+          image: bernborgess/spotify-flask-api:0.6
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+            limits:
+              cpu: 100m
+              memory: 100Mi
+          ports:
+            - containerPort: 32172
+              name: flask-api
+          volumeMounts:
+            - name: project2-pv-bernardoborges
+              mountPath: /home/bernardoborges/project2-pv
+      volumes:
+        - name: project2-pv-bernardoborges
+          hostPath:
+            path: /home/bernardoborges/project2-pv
+      restartPolicy: Always
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spotify-flask-api-service
+  namespace: bernardoborges
+spec:
+  selector:
+    app: spotify-flask-api
+  type: NodePort
+  sessionAffinity: None
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 10800
+  ports:
+    - name: spotify-flask-api-service
+      protocol: TCP
+      port: 32172
+      targetPort: 32172
+      nodePort: 32172
