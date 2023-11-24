@@ -14,13 +14,11 @@ spec:
     spec:
       containers:
         - name: spotify-model-gen
-          image: bernborgess/spotify-model-gen:0.9
+          image: bernborgess/spotify-model-gen:0.6
           command: ["python3", "gen.py"]
           env:
             - name: VOLUME_DIR
               value: /home/bernardoborges/project2-pv
-            - name: DATASET_FILENAME
-              value: 2023_spotify_ds1.csv
           volumeMounts:
             - name: project2-pv-bernardoborges
               mountPath: /home/bernardoborges/project2-pv
