@@ -13,8 +13,8 @@ spec:
         app: spotify-model-gen
     spec:
       containers:
-        - name: spotify-model-gen
-          image: bernborgess/spotify-model-gen:0.9
+        - name: spotify-model-gen-test
+          image: bernborgess/spotify-model-gen:0.10
           command: ["python3", "gen.py"]
           env:
             - name: VOLUME_DIR
