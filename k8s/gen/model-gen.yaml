@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spotify-model-gen
+  namespace: bernardoborges
+  labels:
+    app: spotify-model-gen
+spec:
+  selector:
+    matchLabels:
+      app: spotify-model-gen
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: spotify-model-gen
+    spec:
+      containers:
+        - name: spotify-model-gen
+          image: bernborgess/spotify-model-gen:0.2
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+            limits:
+              cpu: 100m
+              memory: 100Mi
+          volumeMounts:
+            - name: project2-pv-bernardoborges
+              mountPath: /home/bernardoborges/project2-pv
+      volumes:
+        - name: project2-pv-bernardoborges
+          hostPath:
+            path: /home/bernardoborges/project2-pv
+      restartPolicy: Always
