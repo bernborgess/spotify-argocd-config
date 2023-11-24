@@ -1,30 +1,25 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: batch/v1
+kind: Job
 metadata:
   name: spotify-model-gen
   namespace: bernardoborges
   labels:
     app: spotify-model-gen
 spec:
-  selector:
-    matchLabels:
-      app: spotify-model-gen
-  replicas: 1
   template:
     metadata:
+      name: spotify-model-gen
       labels:
         app: spotify-model-gen
     spec:
       containers:
         - name: spotify-model-gen
-          image: bernborgess/spotify-model-gen:0.3
-          resources:
-            requests:
-              cpu: 100m
-              memory: 100Mi
-            limits:
-              cpu: 100m
-              memory: 100Mi
+          image: bernborgess/spotify-model-gen:0.4
+          env:
+            - name: DATASET
+              value: "dummy-where-is-data"
+            - name: OUTPUT_DIR
+              value: "dummy-output-model"
           volumeMounts:
             - name: project2-pv-bernardoborges
               mountPath: /home/bernardoborges/project2-pv
@@ -32,4 +27,6 @@ spec:
         - name: project2-pv-bernardoborges
           hostPath:
             path: /home/bernardoborges/project2-pv
-      restartPolicy: Always
+      restartPolicy: OnFailure
+      dnsPolicy: ClusterFirst
+  backoffLimit: 4
