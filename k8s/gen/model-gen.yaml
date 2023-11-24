@@ -15,6 +15,12 @@ spec:
       containers:
         - name: spotify-model-gen
           image: bernborgess/spotify-model-gen:0.5
+          command: ["python", "gen.py"]
+          env:
+            - name: DATASET
+              value: "dummy-where-is-data"
+            - name: OUTPUT_DIR
+              value: "dummy-output-model"
           volumeMounts:
             - name: project2-pv-bernardoborges
               mountPath: /home/bernardoborges/project2-pv
