@@ -18,15 +18,21 @@ spec:
           command: ["python3", "gen.py"]
           env:
             - name: DATASET
-              value: "dummy-where-is-data"
+              value: "/?"
             - name: OUTPUT_DIR
-              value: "dummy-output-model"
+              value: /home/bernardoborges/project2-pv
           volumeMounts:
             - name: project2-pv-bernardoborges
               mountPath: /home/bernardoborges/project2-pv
+            - name: dataset-volume
+              mountPath: /home/datasets
       volumes:
         - name: project2-pv-bernardoborges
           hostPath:
             path: /home/bernardoborges/project2-pv
+        - name: dataset-volume
+          hostPath:
+            path: /home/datasets
+            type: Directory
       restartPolicy: OnFailure
       dnsPolicy: ClusterFirst
