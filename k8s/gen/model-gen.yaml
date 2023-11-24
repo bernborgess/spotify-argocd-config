@@ -15,7 +15,7 @@ spec:
       containers:
         - name: spotify-model-gen
           image: bernborgess/spotify-model-gen:0.5
-          command: ["python", "gen.py"]
+          command: ["python3", "gen.py"]
           env:
             - name: DATASET
               value: "dummy-where-is-data"
