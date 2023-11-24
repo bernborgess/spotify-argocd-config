@@ -19,8 +19,6 @@ spec:
           env:
             - name: VOLUME_DIR
               value: /home/bernardoborges/project2-pv
-            - name: DATASET_FILENAME
-              value: 2023_spotify_ds1.csv
           volumeMounts:
             - name: project2-pv-bernardoborges
               mountPath: /home/bernardoborges/project2-pv
