@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: spotify-model-gen
-          image: bernborgess/spotify-model-gen:0.2
+          image: bernborgess/spotify-model-gen:0.3
           resources:
             requests:
               cpu: 100m
