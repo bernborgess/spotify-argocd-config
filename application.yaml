@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: spotify-app
-  namespace: argocd
+  namespace: bernardoborges
 spec:
   project: default
   source:
