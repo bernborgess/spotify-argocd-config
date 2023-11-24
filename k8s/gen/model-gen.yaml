@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: spotify-model-gen
-          image: bernborgess/spotify-model-gen:0.4
+          image: bernborgess/spotify-model-gen:0.5
           env:
             - name: DATASET
               value: "dummy-where-is-data"
