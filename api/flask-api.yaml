@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: spotify-flask-api
-          image: bernborgess/spotify-flask-api:1.2
+          image: bernborgess/spotify-flask-api:1.2.1
           resources:
             requests:
               cpu: 100m
