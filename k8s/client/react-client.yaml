@@ -32,7 +32,7 @@ spec:
               value: "32172"
           ports:
             - containerPort: 32472
-              name: spotify-react-client
+              name: client-pod
       restartPolicy: Always
 ---
 apiVersion: v1
