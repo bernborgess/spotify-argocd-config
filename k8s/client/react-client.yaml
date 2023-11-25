@@ -39,7 +39,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: spotify-react-client-service
-  namespace: default
+  namespace: bernardoborges
 spec:
   selector:
     app: spotify-react-client
